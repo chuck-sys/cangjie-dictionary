@@ -33,7 +33,7 @@ body {
 
 @media (max-width: 640px) {
     .container {
-        width: 100%;
+        width: 90%;
     }
 
     .container input {
