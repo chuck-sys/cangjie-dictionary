@@ -14,6 +14,7 @@ exports.decompose = functions.https.onRequest((req, res) => {
         return decompose(req.query.q).then(result => {
             res.send(result);
         }).catch(err => {
+            console.error("Got error while decomposing", new Error(err));
             res.send(err);
         });
     });
