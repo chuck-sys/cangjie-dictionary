@@ -1,3 +1,2 @@
 node_modules
-firebase-debug.log
-.firebase
+dist/main.js
