@@ -1,0 +1,15 @@
+language: node_js
+node_js: 14
+
+install:
+    - npm install
+    - npx webpack --config ./webpack.config.prod.js
+
+deploy:
+    local_dir: dist/
+    provider: pages
+    skip_cleanup: true
+    token: "$GITHUB_TOKEN"
+    keep_history: true
+    on:
+        branch: master
