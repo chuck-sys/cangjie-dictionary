@@ -10,12 +10,15 @@ const decompose = require('cangjie-code').default;
 // });
 
 exports.decompose = functions.https.onRequest((req, res) => {
-    cors(req, res, () => {
-        return decompose(req.query.q).then(result => {
-            res.send(result);
-        }).catch(err => {
-            console.error("Got error while decomposing", new Error(err));
-            res.send(err);
-        });
-    });
+  cors(req, res, () => {
+    return decompose(req.query.q)
+      .then(result => {
+        res.send(result);
+        return result;
+      }).catch(err => {
+        console.error("Got error while decomposing", new Error(err));
+        res.send(err);
+        return err;
+      });
+  });
 });

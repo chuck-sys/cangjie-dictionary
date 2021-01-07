@@ -7,20 +7,18 @@ function createEntry(c, defList) {
         ' : <span class="codes">' + joint + '</span><br>';
 }
 
-$(function() {
-    // Submit on "enter" key pressed
-    $('#query').on('keyup', function(key) {
-        if (key.keyCode == 13) {
-            let query = $('#query').val();
-            $.get(ENDPT + query, data => {
-                $('#result').html(
-                    // Filter out the irrelevant codes
-                    Object.keys(data)
-                    .filter(k => data[k].length > 0)
-                    .map(k => createEntry(k, data[k]))
-                    .join('')
-                );
-            });
-        }
-    });
-});
+function onKeyUp(e) {
+  if (e.code === 'Enter') {
+    let q = document.getElementById('query').value;
+    fetch(ENDPT + q)
+      .then(res => res.json())
+      .then(res => {
+        let resultBox = document.getElementById('result');
+        result.innerHTML = Object.keys(res)
+          .filter(k => res[k].length > 0)
+          .map(k => createEntry(k, res[k]))
+          .join('');
+      })
+      .catch(err => alert(err));
+  }
+}
