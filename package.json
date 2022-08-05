@@ -4,6 +4,7 @@
   "description": "",
   "private": false,
   "scripts": {
+	"build": "webpack --config ./webpack.config.prod.js",
     "test": "echo All tests passed!"
   },
   "repository": {
