@@ -56,5 +56,7 @@ ready(() => {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         onInput();
-    })
+
+        return false;
+    });
 });
