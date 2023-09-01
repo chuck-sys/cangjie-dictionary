@@ -8,7 +8,7 @@ const alphabet = "日月金木水火土竹戈十大中一弓人心手口尸廿�
 function lettersToAlphabet(letters) {
     let ret = ""
     for (const c of letters) {
-        let i = c.charCodeAt(0) - 97;
+        const i = c.charCodeAt(0) - 97;
         if (i < alphabet.length) {
             ret += alphabet[i];
         }
@@ -29,14 +29,14 @@ function toCode(c) {
 }
 
 function createEntry(c, defList) {
-    let joint = defList.join(' or ');
+    const joint = defList.join(' or ');
     return '<span class="char">' + c + '</span>' +
         ' : <span class="codes">' + joint + '</span><br>';
 }
 
 function onInput() {
-    let q = document.getElementById('query').value;
-    let resultBox = document.getElementById('result');
+    const q = document.getElementById('query').value;
+    const resultBox = document.getElementById('result');
 
     resultBox.innerHTML = q.split('')
         .map(c => createEntry(c, toCode(c)))
@@ -52,11 +52,9 @@ function ready(fn) {
 }
 
 ready(() => {
-    const searchInput = document.getElementById('query');
-    query.addEventListener('input', onInput);
-    query.addEventListener('keyup', e => {
-        if (e.code === 'Enter') {
-            onInput();
-        }
-    });
+    const searchForm = document.getElementById('searchForm');
+    searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        onInput();
+    })
 });
