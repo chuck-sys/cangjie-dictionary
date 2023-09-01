@@ -43,20 +43,8 @@ function onInput() {
         .join('');
 }
 
-function ready(fn) {
-    if (document.readyState !== 'loading') {
-        fn();
-    } else {
-        document.addEventListener('DOMContentLoaded', fn);
-    }
-}
-
-ready(() => {
-    const searchForm = document.getElementById('searchForm');
-    searchForm.addEventListener('submit', e => {
-        e.preventDefault();
-        onInput();
-
-        return false;
-    });
+const searchForm = document.getElementById('searchForm');
+searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    onInput();
 });
